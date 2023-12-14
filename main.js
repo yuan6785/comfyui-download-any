@@ -97,22 +97,39 @@ const ext = {
         // Any initial setup to run as soon as the page loads
     },
     async setup(app) {
-        app.ui.menuContainer.appendChild(
-            $el("button.cm-button", {
-                id: "yxcda-download-any-button",
-                textContent: "Manager",
-                onclick: () => {
-                    // 可以弹出一个对话框，让用户选择下载哪个文件
-                    // console.log(1111111)
-                    // todo
-                    if(!manager_instance){
-                        setManagerInstance(new ManagerMenuDialog());
-                    }
-				    manager_instance.show();
-                },
-            })
-        );
-        
+        // 第一种方式
+        // app.ui.menuContainer.appendChild(
+        //     $el("button.cm-button", {
+        //         id: "yxcda-download-any-button",
+        //         textContent: "download any",
+        //         onclick: () => {
+        //             // 可以弹出一个对话框，让用户选择下载哪个文件
+        //             // console.log(1111111)
+        //             // todo
+        //             if(!manager_instance){
+        //                 setManagerInstance(new ManagerMenuDialog());
+        //             }
+		// 		    manager_instance.show();
+        //         },
+        //     })
+        // );
+        // 第二种方式
+        const menu = document.querySelector(".comfy-menu");
+		const separator = document.createElement("hr");
+
+		separator.style.margin = "20px 0";
+		separator.style.width = "100%";
+		menu.append(separator);
+
+		const managerButton = document.createElement("button");
+		managerButton.textContent = "download any";
+		managerButton.onclick = () => {
+				if(!manager_instance){
+                    setManagerInstance(new ManagerMenuDialog());
+                }
+				manager_instance.show();
+			}
+		menu.append(managerButton);
     },
     async addCustomNodeDefs(defs, app) {
         // Add custom node definitions
