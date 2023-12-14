@@ -86,6 +86,10 @@ class ManagerMenuDialog extends ComfyDialog {
 // 这里是全局的
 var manager_instance = null;
 
+function setManagerInstance(obj) {
+    manager_instance = obj;
+}
+
 const ext = {
     name: "YXCDA.DownloadAny",
     async init(app) {
