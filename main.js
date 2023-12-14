@@ -51,7 +51,7 @@ class ManagerMenuDialogYx extends ComfyDialog {
 
     constructor() {
         super();
-
+        // const update_check_checkbox = $el("input",{type:'checkbox', id:"skip_update_check"},[])
         const close_button = $el("button", {
             id: "yxcm-close-button",
             type: "button",

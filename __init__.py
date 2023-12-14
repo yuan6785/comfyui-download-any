@@ -34,6 +34,43 @@ CUR_PATH = Path(__file__).parent
 async def get_hellowworld(request):
     """
     @des: 自定义http接口
+    如果是post， js这么请求
+    static syncTranslation(OnFinished = () => { }) {
+		var locale = localStorage.getItem(TUtils.LOCALE_ID) || "en-US";
+		var url = "./agl/get_translation";
+		var request = new XMLHttpRequest();
+		request.open("post", url);
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send(`locale=${locale}`);
+		request.onload = function () {
+			/* XHR对象获取到返回信息后执行 */
+			if (request.status != 200)
+				return;
+			var resp = JSON.parse(request.responseText);
+			for (var key in TUtils.T) {
+				if (key in resp)
+					TUtils.T[key] = resp[key];
+				else
+					TUtils.T[key] = {};
+			}
+			TUtils.T.Locales = LOCALES;
+			// 合并NodeCategory 到 Menu
+			TUtils.Menu = Object.assign(TUtils.T.Menu, TUtils.T.NodeCategory);
+			// 提取 Node 中 key 到 Menu
+			for (let key in TUtils.T.Nodes) {
+				let node = TUtils.T.Nodes[key];
+				TUtils.Menu[key] = node["title"] || key;
+			}
+			OnFinished();
+		};
+	}
+    如果是get
+    api
+    .fetchApi("/yxcda/helloworld")
+    .then((response) => response.text())
+    .then((data) => {
+        alert(data);
+    });
     """
     # post = await request.post()
     # locale = post.get("locale", "en_US")
