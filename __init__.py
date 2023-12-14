@@ -29,7 +29,8 @@ CUR_PATH = Path(__file__).parent
 
 
 
-@server.PromptServer.instance.routes.post("/yxcda/helloworld")
+# @server.PromptServer.instance.routes.post("/yxcda/helloworld")
+@server.PromptServer.instance.routes.get("/yxcda/helloworld")
 async def get_hellowworld(request):
     """
     @des: 自定义http接口
