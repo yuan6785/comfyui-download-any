@@ -2,86 +2,86 @@ import { app } from "../../scripts/app.js";
 import { $el, ComfyDialog } from "../../scripts/ui.js";
 import { api } from "../../scripts/api.js";
 
-class ManagerMenuDialog extends ComfyDialog {
-    createControlsMid() {
-        let self = this;
+// class ManagerMenuDialog extends ComfyDialog {
+//     createControlsMid() {
+//         let self = this;
 
-        let update_comfyui_button = $el("button.cm-button", {
-            type: "button",
-            textContent: "取消",
-            onclick: () => console.log("取消")
-        });
+//         let update_comfyui_button = $el("button.cm-button", {
+//             type: "button",
+//             textContent: "取消",
+//             onclick: () => console.log("取消")
+//         });
 
-        const res = [
-            $el("button.cm-button", {
-                type: "button",
-                textContent: "确定",
-                onclick: () => {
-                    // if(!ModelInstaller.instance)
-                    // 	ModelInstaller.instance = new ModelInstaller(app, self);
-                    // ModelInstaller.instance.show();
-                    console.log("确定");
-                },
-            }),
+//         const res = [
+//             $el("button.cm-button", {
+//                 type: "button",
+//                 textContent: "确定",
+//                 onclick: () => {
+//                     // if(!ModelInstaller.instance)
+//                     // 	ModelInstaller.instance = new ModelInstaller(app, self);
+//                     // ModelInstaller.instance.show();
+//                     console.log("确定");
+//                 },
+//             }),
 
-            $el("br", {}, []),
-            update_comfyui_button,
+//             $el("br", {}, []),
+//             update_comfyui_button,
 
-            $el("br", {}, [])
-        ];
+//             $el("br", {}, [])
+//         ];
 
-        return res;
-    }
+//         return res;
+//     }
 
-    createControlsLeft() {
-        let self = this;
-        return [];
-    }
+//     createControlsLeft() {
+//         let self = this;
+//         return [];
+//     }
 
-    createControlsRight() {
-        const elts = [];
-        return elts;
-    }
+//     createControlsRight() {
+//         const elts = [];
+//         return elts;
+//     }
 
-    constructor() {
-        super();
+//     constructor() {
+//         super();
 
-        const close_button = $el("button", {
-            id: "yxcm-close-button",
-            type: "button",
-            textContent: "Close",
-            onclick: () => this.close(),
-        });
+//         const close_button = $el("button", {
+//             id: "yxcm-close-button",
+//             type: "button",
+//             textContent: "Close",
+//             onclick: () => this.close(),
+//         });
 
-        const content = $el("div.comfy-modal-content", [
-            $el("tr.cm-title", {}, [
-                $el("font", { size: 6, color: "white" }, [`ComfyUI Manager Menu`]),
-            ]),
-            $el("br", {}, []),
-            $el("div.cm-menu-container", [
-                $el("div.cm-menu-column", [...this.createControlsLeft()]),
-                $el("div.cm-menu-column", [...this.createControlsMid()]),
-                $el("div.cm-menu-column", [...this.createControlsRight()]),
-            ]),
+//         const content = $el("div.comfy-modal-content", [
+//             $el("tr.cm-title", {}, [
+//                 $el("font", { size: 6, color: "white" }, [`ComfyUI Manager Menu`]),
+//             ]),
+//             $el("br", {}, []),
+//             $el("div.cm-menu-container", [
+//                 $el("div.cm-menu-column", [...this.createControlsLeft()]),
+//                 $el("div.cm-menu-column", [...this.createControlsMid()]),
+//                 $el("div.cm-menu-column", [...this.createControlsRight()]),
+//             ]),
 
-            $el("br", {}, []),
-            close_button,
-        ]);
+//             $el("br", {}, []),
+//             close_button,
+//         ]);
 
-        content.style.width = "100%";
-        content.style.height = "100%";
+//         content.style.width = "100%";
+//         content.style.height = "100%";
 
-        this.element = $el(
-            "div.comfy-modal",
-            { id: "yxcm-manager-dialog", parent: document.body },
-            [content]
-        );
-    }
+//         this.element = $el(
+//             "div.comfy-modal",
+//             { id: "yxcm-manager-dialog", parent: document.body },
+//             [content]
+//         );
+//     }
 
-    show() {
-        this.element.style.display = "block";
-    }
-}
+//     show() {
+//         this.element.style.display = "block";
+//     }
+// }
 
 // 这里是全局的
 let manager_instance = null;
@@ -102,12 +102,12 @@ const ext = {
                 textContent: "download any",
                 onclick: () => {
                     // 可以弹出一个对话框，让用户选择下载哪个文件
-                    // console.log(1111111)
+                    console.log(1111111)
                     // todo
-                    if(!manager_instance){
-                        setManagerInstance(new ManagerMenuDialog());
-                    }
-				    manager_instance.show();
+                    // if(!manager_instance){
+                    //     setManagerInstance(new ManagerMenuDialog());
+                    // }
+				    // manager_instance.show();
                 },
             })
         );
