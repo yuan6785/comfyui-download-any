@@ -6,10 +6,10 @@ class ManagerMenuDialog extends ComfyDialog {
     createControlsMid() {
         let self = this;
 
-        update_comfyui_button = $el("button.cm-button", {
+        let update_comfyui_button = $el("button.cm-button", {
             type: "button",
             textContent: "取消",
-            onclick: () => console.log("取消"),
+            onclick: () => console.log("取消")
         });
 
         const res = [
@@ -27,7 +27,7 @@ class ManagerMenuDialog extends ComfyDialog {
             $el("br", {}, []),
             update_comfyui_button,
 
-            $el("br", {}, []),
+            $el("br", {}, [])
         ];
 
         return res;
@@ -47,7 +47,7 @@ class ManagerMenuDialog extends ComfyDialog {
         super();
 
         const close_button = $el("button", {
-            id: "cm-close-button",
+            id: "yxcm-close-button",
             type: "button",
             textContent: "Close",
             onclick: () => this.close(),
@@ -73,7 +73,7 @@ class ManagerMenuDialog extends ComfyDialog {
 
         this.element = $el(
             "div.comfy-modal",
-            { id: "cm-manager-dialog", parent: document.body },
+            { id: "yxcm-manager-dialog", parent: document.body },
             [content]
         );
     }
@@ -84,7 +84,7 @@ class ManagerMenuDialog extends ComfyDialog {
 }
 
 // 这里是全局的
-var manager_instance = null;
+let manager_instance = null;
 
 function setManagerInstance(obj) {
     manager_instance = obj;
