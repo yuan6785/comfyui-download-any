@@ -1,7 +1,91 @@
 import { app } from "../../scripts/app.js";
-import { $el } from "../../scripts/ui.js";
+import { $el, ComfyDialog } from "../../scripts/ui.js";
+import { api } from "../../scripts/api.js"
 
 
+class ManagerMenuDialog extends ComfyDialog {
+	createControlsMid() {
+		let self = this;
+
+		update_comfyui_button =
+			$el("button.cm-button", {
+				type: "button",
+				textContent: "取消",
+				onclick:
+					() => console.log("取消")
+			});
+		
+		const res =
+			[
+				
+
+				$el("button.cm-button", {
+					type: "button",
+					textContent: "确定",
+					onclick:
+						() => {
+							// if(!ModelInstaller.instance)
+							// 	ModelInstaller.instance = new ModelInstaller(app, self);
+							// ModelInstaller.instance.show();
+                            console.log("确定")
+						}
+				}),
+
+				$el("br", {}, []),
+				update_comfyui_button,
+
+				$el("br", {}, []),
+			];
+
+		return res;
+	}
+
+	createControlsLeft() {
+		let self = this;
+		return [
+		];
+	}
+
+	createControlsRight() {
+		const elts = [
+		];
+		return elts;
+	}
+
+    constructor() {
+		super();
+
+		const close_button = $el("button", { id: "cm-close-button", type: "button", textContent: "Close", onclick: () => this.close() });
+
+		const content =
+				$el("div.comfy-modal-content",
+					[
+						$el("tr.cm-title", {}, [
+								$el("font", {size:6, color:"white"}, [`ComfyUI Manager Menu`])]
+							),
+						$el("br", {}, []),
+						$el("div.cm-menu-container",
+							[
+								$el("div.cm-menu-column", [...this.createControlsLeft()]),
+								$el("div.cm-menu-column", [...this.createControlsMid()]),
+								$el("div.cm-menu-column", [...this.createControlsRight()])
+							]),
+				
+						$el("br", {}, []),
+						close_button,
+					]
+				);
+
+		content.style.width = '100%';
+		content.style.height = '100%';
+
+		this.element = $el("div.comfy-modal", { id:'cm-manager-dialog', parent: document.body }, [ content ]);
+	}
+
+	show() {
+		this.element.style.display = "block";
+	}
+}
 
 	
 
@@ -14,11 +98,13 @@ const ext = {
 	},
 	async setup(app) {
 		app.ui.menuContainer.appendChild(
-			$el("button.yxcda-download-any", {
+			$el("button.cm-button", {
 				id: "yxcda-download-any-button",
 				textContent: "download any",
 				onclick: () => {
-					console.log(1111111)
+                    // 可以弹出一个对话框，让用户选择下载哪个文件
+					// console.log(1111111)
+                    // todo
 				},
 			}));
 	},
