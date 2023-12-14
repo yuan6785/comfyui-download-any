@@ -2,7 +2,7 @@ import { app } from "../../scripts/app.js";
 import { $el, ComfyDialog } from "../../scripts/ui.js";
 import { api } from "../../scripts/api.js";
 
-class ManagerMenuDialog extends ComfyDialog {
+class ManagerMenuDialogYx extends ComfyDialog {
     createControlsMid() {
         let self = this;
 
@@ -85,13 +85,13 @@ class ManagerMenuDialog extends ComfyDialog {
 }
 
 // 这里是全局的
-let manager_instance = null;
+let manager_instance_yx = null;
 
-function setManagerInstance(obj) {
-    manager_instance = obj;
+function setManagerInstance_yx(obj) {
+    manager_instance_yx = obj;
 }
 
-const ext = {
+const ext1 = {
     name: "YXCDA.DownloadAny",
     async init(app) {
         // Any initial setup to run as soon as the page loads
@@ -106,10 +106,10 @@ const ext = {
         //             // 可以弹出一个对话框，让用户选择下载哪个文件
         //             // console.log(1111111)
         //             // todo
-        //             if(!manager_instance){
-        //                 setManagerInstance(new ManagerMenuDialog());
+        //             if(!manager_instance_yx){
+        //                 setManagerInstance_yx(new ManagerMenuDialogYx());
         //             }
-		// 		    manager_instance.show();
+		// 		    manager_instance_yx.show();
         //         },
         //     })
         // );
@@ -124,10 +124,10 @@ const ext = {
 		const managerButton = document.createElement("button");
 		managerButton.textContent = "download any";
 		managerButton.onclick = () => {
-				if(!manager_instance){
-                    setManagerInstance(new ManagerMenuDialog());
+				if(!manager_instance_yx){
+                    setManagerInstance_yx(new ManagerMenuDialogYx());
                 }
-				manager_instance.show();
+				manager_instance_yx.show();
 			}
 		menu.append(managerButton);
     },
@@ -165,4 +165,4 @@ const ext = {
     },
 };
 
-app.registerExtension(ext);
+app.registerExtension(ext1);
